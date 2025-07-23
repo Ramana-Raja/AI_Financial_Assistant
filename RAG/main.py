@@ -13,10 +13,10 @@ def extract_pdf_text_by_page(pdf_path):
     try:
         doc = fitz.open(pdf_path)
         texts = [page.get_text() for page in doc]
-        print(f"Successfully extracted text from {len(texts)} pages.")
+        print(f"successfully extracted text from {len(texts)} pages")
         return texts
     except Exception as e:
-        print(f"Error reading PDF: {e}")
+        print(f"error reading PDF:{e}")
         return []
 
 
@@ -26,7 +26,7 @@ def download_nltk_data():
     except LookupError:
         print("NLTK 'punkt' tokenizer not found.Downloading...")
         nltk.download('punkt', quiet=True)
-        print("NLTK 'punkt' tokenizer downloaded.")
+        print("NLTK 'punkt' tokenizer downloaded")
 
 
 def fixed_size_chunker(text, chunk_size, chunk_overlap):
