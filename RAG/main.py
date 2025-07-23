@@ -24,7 +24,7 @@ def download_nltk_data():
     try:
         nltk.data.find('tokenizers/punkt')
     except LookupError:
-        print("NLTK 'punkt' tokenizer not found. Downloading...")
+        print("NLTK 'punkt' tokenizer not found.Downloading...")
         nltk.download('punkt', quiet=True)
         print("NLTK 'punkt' tokenizer downloaded.")
 
@@ -54,7 +54,6 @@ def get_top_contexts(question, chat_history, embed_model, corpus_embeddings, sem
     top_chunks = [semantic_chunks[i] for i in top_k_indices]
     return top_chunks
 
-
 def generate_consolidated_answer(question, contexts, chat_history, t5_model, tokenizer):
     history_prompt = "\n".join([f"User: {q}\nAI: {a}" for q, a in chat_history])
     context_prompt = "\n\n".join(contexts)
@@ -75,13 +74,11 @@ def generate_consolidated_answer(question, contexts, chat_history, t5_model, tok
     answer = tokenizer.decode(output_ids[0], skip_special_tokens=True)
     return answer
 
-
 def print_human_like(text):
     for char in text:
         print(char, end='', flush=True)
         time.sleep(random.uniform(0.01, 0.05))
     print()
-
 
 def main():
     print("loading models...")
@@ -92,9 +89,9 @@ def main():
         embed_model = SentenceTransformer(embed_model_path)
         tokenizer = AutoTokenizer.from_pretrained(t5_model_path)
         t5_model = AutoModelForSeq2SeqLM.from_pretrained(t5_model_path)
-        print("models loaded successfully. ✅")
+        print("models loaded successfully")
     except Exception as e:
-        print(f"error loading models: {e}")
+        print(f"error loading models:{e}")
         return
 
     download_nltk_data()
@@ -125,7 +122,5 @@ def main():
         chat_history.append((question, answer))
         if len(chat_history) > MAX_HISTORY_TURNS:
             chat_history.pop(0)
-
-
 if __name__ == "__main__":
     main()
