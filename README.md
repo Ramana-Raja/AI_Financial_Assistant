@@ -46,7 +46,7 @@ python main.py
 ```
 Azure
 ├── modules_download
-│   ├── nlt.py #to download punkt
+│   └── nlt.py #to download punkt
 │
 ├── testing #contains some testings(for personal test)
 │
