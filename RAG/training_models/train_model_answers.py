@@ -14,7 +14,7 @@ df["target_text"] = df["answer"]
 dataset = Dataset.from_pandas(df[["input_text", "target_text"]])
 
 
-t5_model_path = "C:/Users/raman/Downloads/New folder (7)"
+t5_model_path = "google/flan-t5-base"
 tokenizer = AutoTokenizer.from_pretrained(t5_model_path)
 model = AutoModelForSeq2SeqLM.from_pretrained(t5_model_path)
 
