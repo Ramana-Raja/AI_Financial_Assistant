@@ -1,0 +1,12 @@
+[
+  {
+    "type": "sentence_transformers.models.Transformer",
+    "path": "",
+    "tokenizer_name": "bert-base-uncased"
+  },
+  {
+    "type": "sentence_transformers.models.Pooling",
+    "word_embedding_dimension": 768,
+    "pooling_mode_mean_tokens": true
+  }
+]
