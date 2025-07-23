@@ -41,12 +41,22 @@ pdf_path = "your_document.pdf"
 python main.py
 ```
 
+## 📁 Project Structure
+
+```
+Azure
+├── training_model
+│   ├── inference.py #testing with a single prompt
+│   ├── train_model_answers.py #for training FLAN-T5
+│   └── train_new_knowledge.py #for training all-MiniLM-L6-v2
+│     
+└── main.py #main file which requires pdf
+```
+
 ## Road Map
 
 ### Web interface development
 
 ### Additional document format support
-
-### Vector database integration
 
 ### Advanced agent capabilities
