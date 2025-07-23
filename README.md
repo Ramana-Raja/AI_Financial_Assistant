@@ -1,100 +1,52 @@
-AI Financial Assistant 🤖
+# AI Financial Assistant 🤖
 
-This project is a bot designed to read and analyze financial PDF reports. Users can ask it questions in plain English, and it will find and deliver the relevant information, removing the need to manually search through lengthy documents.
-What It Does
+A bot designed to read and analyze financial PDF reports. Users can ask questions in plain English, and it will find and deliver relevant information, eliminating the need to manually search through lengthy documents.
 
-    Conversational Q&A: Allows users to interact with financial PDFs using natural language to get clear, concise answers.
+## Features
 
-    Advanced RAG Pipeline: Utilizes a Retrieval-Augmented Generation (RAG) pipeline to find the right information and piece together a coherent answer.
+- **Conversational Q&A**: Interact with financial PDFs using natural language to get clear, concise answers
+- **Advanced RAG Pipeline**: Utilizes Retrieval-Augmented Generation to find and synthesize information
+- **Conversational Memory**: Retains context over the last six turns for complex follow-up questions
+- **High-Performance Models**: Powered by `google/flan-t5-base` for generation and `all-MiniLM-L6-v2` for semantic retrieval
+- **Extendable**: Fine-tune models on your own data to improve performance for specific domains
 
-    Conversational Memory: The system retains context over the last six turns, allowing for complex follow-up questions without needing to restart the conversation.
+## How It Works
 
-    High-Performance Models: Powered by google/flan-t5-base for generation and all-MiniLM-L6-v2 for semantic retrieval.
+The application uses a Retrieval-Augmented Generation (RAG) architecture:
 
-    Extendable: Users can fine-tune the models on their own data to improve performance for specific domains.
+1. **PDF Ingestion**: Extracts all text from the source PDF
+2. **Chunking**: Segments text into smaller, overlapping chunks to maintain context
+3. **Embedding**: Converts text chunks into numerical vectors (embeddings)
+4. **Retrieval**: Finds most relevant text chunks when a question is asked
+5. **Synthesis**: Generates a final, human-like answer using the FLAN-T5 model
 
-How It Works (The Guts)
+## Tech Stack
 
-The application is built on a Retrieval-Augmented Generation (RAG) architecture:
+- **Core**: Python 3.9+
+- **AI Frameworks**: PyTorch, Hugging Face (transformers, sentence-transformers)
+- **PDF Processing**: PyMuPDF (fitz)
+- **Text Utilities**: NLTK
 
-    PDF Ingestion: It first extracts all text from the source PDF.
+## 🚀 Usage
 
-    Chunking: The text is then segmented into smaller, overlapping chunks to maintain semantic context.
+### 1. Set your PDF path
 
-    Embedding: An AI model converts these text chunks into numerical vectors (embeddings) to understand their meaning.
+```python
+pdf_path = "your_document.pdf"
+```
 
-    Retrieval: When a user asks a question, the system finds the most relevant text chunks by comparing the question's embedding to the document's embeddings.
+### 2. Run The File
 
-    Synthesis: The best-matching chunks, along with the chat history and the original question, are fed to the FLAN-T5 model to generate a final, human-like answer.
-
-The Tech Stack
-
-    Core: Python 3.9+
-
-    AI Frameworks: PyTorch, Hugging Face (transformers, sentence-transformers)
-
-    PDF Processing: PyMuPDF (fitz)
-
-    Text Utilities: NLTK
-
-
-How to Use It
-1. Chat with a PDF
-
-This is the main functionality of the application.
-
-Configuration:
-
-    Open main.py.
-
-    Update the pdf_path variable to the file path of your PDF.
-
-# Inside main.py
-pdf_path = "path/to/your/financial_report.pdf"
-
-Run the application:
-
+```python
 python main.py
+```
 
-The script will load the necessary models and process the document. Once it's ready, you can start asking questions. Type -1 to exit.
-2. Fine-Tuning the Models (Optional)
+## Road Map
 
-Users can enhance the bot's performance by training it on custom financial Q&A data.
-A. Train the Generator (FLAN-T5)
+### Web interface development
 
-    Open fine_tune_t5.py.
+### Additional document format support
 
-    Ensure the path to your CSV file is correct. The CSV must have question, context, and answer columns.
+### Vector database integration
 
-    Run python fine_tune_t5.py.
-
-B. Train the Retriever (Sentence Transformer)
-
-    Open fine_tune_embedding_model.py.
-
-    Point it to your CSV dataset.
-
-    Run python fine_tune_embedding_model.py.
-
-Project Structure
-
-.
-├── main.py                     # The main chat application
-├── fine_tune_t5.py             # Script to train the generator AI
-├── fine_tune_embedding_model.py # Script to train the retriever AI
-├── requirements.txt            # List of dependencies
-└── README.md                   # You're reading it
-
-Future Roadmap
-
-    [ ] Develop a web UI (e.g., using Streamlit or Flask).
-
-    [ ] Add support for more document formats like .docx or URLs.
-
-    [ ] Integrate a vector database for more efficient and scalable indexing.
-
-    [ ] Explore more advanced agentic behaviors and tool integrations.
-
-License
-
-This project is available under the MIT License.
+### Advanced agent capabilities
