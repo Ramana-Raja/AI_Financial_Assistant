@@ -45,6 +45,11 @@ python main.py
 
 ```
 Azure
+├── modules_download
+│   ├── nlt.py #to download punkt
+│
+├── testing #contains some testings(for personal test)
+│
 ├── training_model
 │   ├── inference.py #testing with a single prompt
 │   ├── train_model_answers.py #for training FLAN-T5
